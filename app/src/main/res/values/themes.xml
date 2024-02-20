@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.FearGreedIndexWidget" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.FearGreedIndexWidget" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorBackground">@color/main_color_background</item>
+    </style>
+
+    <style name="Theme.FearGreedIndexWidget.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+        <item name="appWidgetRadius">16dp</item>
+        <item name="appWidgetInnerRadius">8dp</item>
+    </style>
+
+    <style name="Theme.FearGreedIndexWidget.AppWidgetContainer" parent="Theme.FearGreedIndexWidget.AppWidgetContainerParent">
+        <item name="appWidgetPadding">8dp</item>
+    </style>
 </resources>

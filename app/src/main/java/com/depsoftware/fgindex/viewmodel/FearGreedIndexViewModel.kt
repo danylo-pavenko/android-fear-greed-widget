@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class FearGreedIndexViewModel: ViewModel() {
 
     private val dataSource: IFearGreedDataSource = RemoteFearGreedDataSource()
-    private val repository: IFearGreedIndexRepository = FearGreedIndexRepository(dataSource)
+    val repository: IFearGreedIndexRepository = FearGreedIndexRepository(dataSource)
 
     private val _uiState = MutableStateFlow<FearGreedIndexState>(FearGreedIndexState.Default)
     val uiState: StateFlow<FearGreedIndexState> = _uiState.asStateFlow()

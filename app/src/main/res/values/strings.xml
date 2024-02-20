@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">Fear Greed Index Widget</string>
     <string name="title_actual_fear_greed">Actual fear and greed index:</string>
+    <string name="title_actual_fear_greed_widget">F&amp;G%:</string>
     <string name="label_btn_reload">Reload</string>
     <string name="label_index_classification_none">None</string>
     <string name="label_index_classification_fear">Fear 😱</string>
     <string name="label_index_classification_greed">Greed 😎</string>
-    <string name="label_state_loading">Loading...</string>
+    <string name="label_state_loading">Loading&#8230;</string>
     <string name="label_state_failed">Failed to load</string>
+    <string name="appwidget_text">Index value displayed</string>
+    <string name="add_widget">Fear&amp;Greed Index</string>
+    <string name="app_widget_description">Widget to display of fear greed index from pop site.</string>
 </resources>
