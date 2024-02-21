@@ -15,14 +15,16 @@ data class FearGreedIndex(
 
     enum class Classification(@StringRes val nameResId: Int) {
         FEAR(R.string.label_index_classification_fear),
-        GREED(R.string.label_index_classification_greed)
+        EXTREME_FEAR(R.string.label_index_classification_fear_extreme),
+        GREED(R.string.label_index_classification_greed),
+        EXTREME_GREED(R.string.label_index_classification_greed_extreme),
     }
 }
 
 fun FearGreedIndexResponse.map(type: FearGreedIndex.Type): FearGreedIndex {
     return FearGreedIndex(
         this.value,
-        FearGreedIndex.Classification.valueOf(this.value_classification.uppercase()),
+        FearGreedIndex.Classification.valueOf(this.value_classification.uppercase().replace(" ", "_")),
         type
     )
 }

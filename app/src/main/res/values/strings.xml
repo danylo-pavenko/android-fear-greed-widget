@@ -4,8 +4,10 @@
     <string name="title_actual_fear_greed_widget">F&amp;G%:</string>
     <string name="label_btn_reload">Reload</string>
     <string name="label_index_classification_none">None</string>
+    <string name="label_index_classification_fear_extreme">Extreme Fear 😱🥶 (Buy)</string>
     <string name="label_index_classification_fear">Fear 😱</string>
     <string name="label_index_classification_greed">Greed 😎</string>
+    <string name="label_index_classification_greed_extreme">Extreme Greed 😎🤯 (Sell)</string>
     <string name="label_state_loading">Loading&#8230;</string>
     <string name="label_state_failed">Failed to load</string>
     <string name="appwidget_text">Index value displayed</string>

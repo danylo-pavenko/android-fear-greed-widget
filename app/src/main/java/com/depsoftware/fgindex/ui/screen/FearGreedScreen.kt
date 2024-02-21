@@ -12,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,7 +45,7 @@ fun FearGreedScreen(viewModel: FearGreedIndexViewModel = viewModel()) {
                 Text(
                     text = value,
                     modifier = Modifier.padding(vertical = 12.dp).fillMaxWidth(),
-                    fontSize = 24.sp,
+                    fontSize = 64.sp,
                     fontWeight = FontWeight.Bold,
                 )
             }
@@ -59,10 +60,7 @@ fun FearGreedScreen(viewModel: FearGreedIndexViewModel = viewModel()) {
         }
         Row {
             Button(onClick = { viewModel.loadData() }) {
-                Text(
-                    text = stringResource(id = R.string.label_btn_reload),
-                    color = Color.LightGray,
-                )
+                Text(text = stringResource(id = R.string.label_btn_reload))
             }
         }
     }
