@@ -8,15 +8,23 @@ import android.content.Intent
 import android.widget.RemoteViews
 import com.depsoftware.fgindex.domain.model.FearGreedIndex
 import com.depsoftware.fgindex.viewmodel.FearGreedIndexViewModel
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Implementation of App Widget functionality.
  */
-class FearGreedIndexWidget : AppWidgetProvider() {
+class FearGreedIndexWidget : AppWidgetProvider(), CoroutineScope  {
 
     private val viewModel = FearGreedIndexViewModel()
+
+    private val job = SupervisorJob()
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.IO.plus(job)
 
     override fun onUpdate(
         context: Context,
@@ -24,10 +32,12 @@ class FearGreedIndexWidget : AppWidgetProvider() {
         appWidgetIds: IntArray
     ) {
         // There may be multiple widgets active, so update all of them
-        GlobalScope.launch {
+        launch {
             val data = viewModel.repository.getFearGreedIndexByType(FearGreedIndex.Type.ACTUAL)
             for (appWidgetId in appWidgetIds) {
-                updateAppWidget(context, appWidgetManager, appWidgetId, data)
+                withContext(Dispatchers.Main) {
+                    updateAppWidget(context, appWidgetManager, appWidgetId, data)
+                }
             }
         }
     }
@@ -38,6 +48,11 @@ class FearGreedIndexWidget : AppWidgetProvider() {
 
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
+    }
+
+    override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
+        job.cancel()
+        super.onDeleted(context, appWidgetIds)
     }
 }
 
